@@ -1,0 +1,47 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+src/main/resources/.env
+### VS Code ###
+.vscode/
+.env
+
+### payment webhook 제외 ###
+src/main/java/com/cakemate/cake_platform/domain/payment/webhook/
+
+### DataInitializer 제외 ###
+src/main/java/com/cakemate/cake_platform/DataInitializer.java
+
+### RequestFormCsvGenerator 제외 ###
+src/main/java/RequestFormCsvGenerator.java
