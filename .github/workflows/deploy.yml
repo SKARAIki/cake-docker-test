@@ -89,7 +89,7 @@ jobs:
         run: |
           echo "Security Group ID: ${{ secrets.AWS_SG_ID }}"
           echo "Runner IP: ${{ steps.ip.outputs.ipv4 }}"
-          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} 
+          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} \
           --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
       # AWS EC2 Server Connect & Docker 명령어 실행 (8)
@@ -111,5 +111,5 @@ jobs:
       # REMOVE GitHub IP FROM a security group (9)
       - name: Remove IP FROM security group
         run: |
-          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} 
+          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} \
           --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
