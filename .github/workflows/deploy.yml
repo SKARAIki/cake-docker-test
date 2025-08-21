@@ -20,7 +20,7 @@ jobs:
 
       - name: Grant permission to gradlew
         run: chmod +x ./gradlew
-          # gradle 캐싱 (0)
+        # gradle 캐싱 (0)
       - name: Gradle Caching
         uses: actions/cache@v3
         with:
@@ -71,6 +71,10 @@ jobs:
       - name: get GitHub IP
         id: ip
         uses: haythem/public-ip@v1.2
+      - name: Debug GitHub IP  # 디버깅 스텝 추가
+        run: |
+          echo "GitHub Actions Runner IP:"
+          echo "${{ steps.ip.outputs.ipv4 }}"
 
       # Configure AWS Credentials (6) - AWS 접근 권한 취득(IAM)
       - name: Configure AWS Credentials
