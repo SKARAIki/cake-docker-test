@@ -119,8 +119,16 @@ jobs:
               zoemthsus/cakemate:1.0
               sleep 3 
               sudo docker logs -f dnd2 > /home/ubuntu/app.log 2>&1 &
+      - name: Debug ENV
+        run: |
+          echo "Deploying to EC2 with DATABASE=${{ secrets.RDS_DATABASE }}"
+          echo "DATABASE=${{ secrets.RDS_DATABASE }}"
+          echo "USERNAME=${{ secrets.RDS_USERNAME }}"
+          echo "EC2END=${{ secrets.EC2END }}"
+    
+    
 
-      # REMOVE GitHub IP FROM a security group (9)
+    # REMOVE GitHub IP FROM a security group (9)
       - name: Remove IP FROM security group
         run: |
           aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} \
