@@ -121,7 +121,7 @@ jobs:
             sudo docker pull zoemthsus/cakemate:1.0
 
             sudo docker run -it -d \
-              -p 8000:8080 \
+              -p 8000:8000 \
               --name dnd2 \
               -e REDIS_HOST=$REDIS_HOST \
               -e REDIS_PORT=$REDIS_PORT \
