@@ -122,7 +122,6 @@ jobs:
 
             sudo docker run -it -d \
               -p 8000:8080 \
-              --network host \
               --name dnd2 \
               -e REDIS_HOST=$REDIS_HOST \
               -e REDIS_PORT=$REDIS_PORT \
