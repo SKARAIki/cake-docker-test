@@ -1,4 +1,7 @@
-FROM openjdk:17-jdk
+FROM openjdk:17-jdk-slim
+
+RUN apt update && apt install -y curl iproute2 net-tools
+
 
 WORKDIR /app
 
