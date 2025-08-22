@@ -116,6 +116,7 @@ jobs:
             sudo docker rmi zoemthsus/cakemate:1.0 
             sudo docker pull zoemthsus/cakemate:1.0
             sudo docker run -it -d \
+            --network host \
               -p 8000:8080 \
               --name dnd2 \
               -e EC2END=$EC2END \
