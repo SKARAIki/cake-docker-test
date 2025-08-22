@@ -106,10 +106,20 @@ jobs:
             sudo docker rm dnd2
             sudo docker rmi zoemthsus/cakemate:1.0
             sudo docker pull zoemthsus/cakemate:1.0
-            sudo docker run -it -d -p 8000:8080 --name dnd2 zoemthsus/cakemate:1.0
+            docker run -it -d \
+            -p 8000:8080 \
+            --name dnd2 \
+            -e EC2END=${{ secrets.EC2END }} \
+            -e DATABASE=${{ secrets.DATABASE }} \
+            -e USERNAME=${{ secrets.USERNAME }} \
+            -e PASSWORD=${{ secrets.PASSWORD }} \
+            -e JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }} \
+            -e KAKAO_CLIENT_ID=${{ secrets.KAKAO_CLIENT_ID }} \
+            -e KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }} \
+            zoemthsus/cakemate:1.0
 
-      # REMOVE GitHub IP FROM a security group (9)
-      - name: Remove IP FROM security group
-        run: |
-          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} \
-          --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+  # REMOVE GitHub IP FROM a security group (9)
+  - name: Remove IP FROM security group
+    run: |
+      aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} \
+      --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
