@@ -110,10 +110,11 @@ jobs:
             JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}"
             KAKAO_CLIENT_ID="${{ secrets.KAKAO_CLIENT_ID }}"
             KAKAO_CLIENT_SECRET="${{ secrets.KAKAO_CLIENT_SECRET }}"
-            REDIS_HOST: "${{ secrets.REDIS_HOST }}"
-            REDIS_PORT: "${{ secrets.REDIS_PORT }}"
-            REDIS_PASSWORD: "${{ secrets.REDIS_PASSWORD }}"
-  
+            export REDIS_HOST="${{ secrets.REDIS_HOST }}"
+            export REDIS_PORT="${{ secrets.REDIS_PORT }}"
+            export REDIS_PASSWORD="${{ secrets.REDIS_PASSWORD }}"
+      
+      
             sudo docker stop dnd2 
             sudo docker rm dnd2 
             sudo docker rmi zoemthsus/cakemate:1.0 
