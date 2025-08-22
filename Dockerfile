@@ -7,3 +7,4 @@ COPY build/libs/cake-platform-0.0.1-SNAPSHOT.jar /app/cake-platform-0.0.1-SNAPSH
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "/app/cake-platform-0.0.1-SNAPSHOT.jar"]
+CMD ["--spring.profiles.active=prod"]
